@@ -104,7 +104,6 @@ namespace MrX.Game.World
         }
         public void Render(ShaderProgram program)
         {
-            program.Bind();
             if (!BeRender) { return; }
             chunkVAO.Bind();
             if (Update) { chunkUVVBO.Update(chunkUVs); Update = false; }

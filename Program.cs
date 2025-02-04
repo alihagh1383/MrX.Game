@@ -21,7 +21,7 @@ namespace MrX.Game
             using (Game game = new Game(1000, 1000))
             {
                 // running the game
-                game.UpdateFrequency = 5 / 1f;
+                //game.UpdateFrequency = 5 / 1f;
                 game.Run();
             }
         }

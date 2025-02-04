@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.Game", "MrX.Game.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.Noise", "..\MrX.Noise\MrX.Noise\MrX.Noise.csproj", "{C51A75DD-FB8E-4360-B397-763A318CEBBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.GameV2", "..\MrX.GameV2\MrX.GameV2.csproj", "{FC8984B5-81F8-478B-8747-415E873CBC37}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{C51A75DD-FB8E-4360-B397-763A318CEBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51A75DD-FB8E-4360-B397-763A318CEBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51A75DD-FB8E-4360-B397-763A318CEBBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC8984B5-81F8-478B-8747-415E873CBC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC8984B5-81F8-478B-8747-415E873CBC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC8984B5-81F8-478B-8747-415E873CBC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC8984B5-81F8-478B-8747-415E873CBC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

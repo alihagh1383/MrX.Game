@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MrX.Noise;
-using MrX.Game.NoiseGen;
 using MrX.Game.World.Blocks;
 using OpenTK.Mathematics;
 

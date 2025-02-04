@@ -11,7 +11,7 @@ namespace MrX.Game
     public static class Statics
     {
         static public float
-            CameraSPEED = 10f,
+            CameraSPEED = 1f,
             CameraZOME = 1f;
         static public Vector3
             CameraPosition = new Vector3(-2000,1000, -2000),

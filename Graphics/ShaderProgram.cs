@@ -13,32 +13,31 @@ namespace MrX.Game.Graphics
         public ShaderProgram(string vertexShaderFilepath, string fragmentShaderFilepath) {
             // create the shader program
             ID = GL.CreateProgram();
-
-            // create the vertex shader
             int vertexShader = GL.CreateShader(ShaderType.VertexShader);
-            // add the source code from "Default.vert" in the Shaders file
             GL.ShaderSource(vertexShader, LoadShaderSource(vertexShaderFilepath));
-            // Compile the Shader
-            GL.CompileShader(vertexShader);
-
-            // Same as vertex shader
             int fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
             GL.ShaderSource(fragmentShader, LoadShaderSource(fragmentShaderFilepath));
+            GL.CompileShader(vertexShader);
             GL.CompileShader(fragmentShader);
-
-            // Attach the shaders to the shader program
             GL.AttachShader(ID, vertexShader);
             GL.AttachShader(ID, fragmentShader);
-
+            string infoLogFrag = GL.GetShaderInfoLog(fragmentShader);
+            if (infoLogFrag != System.String.Empty)
+                System.Console.WriteLine(infoLogFrag);
+            string infoLogVert = GL.GetShaderInfoLog(vertexShader);
+            if (infoLogVert != System.String.Empty)
+                System.Console.WriteLine(infoLogVert);
             // Link the program to OpenGL
             GL.LinkProgram(ID);
 
             // delete the shaders
             GL.DeleteShader(vertexShader);
             GL.DeleteShader(fragmentShader);
+            GL.DeleteShader(fragmentShader);
+            GL.DeleteShader(vertexShader);
         }
 
-        public void Bind() { GL.UseProgram(ID); }
+        public void Bind() { GL.UseProgram(ID);}
         public void Unbind() { GL.UseProgram(0); }
         public void Delete() { GL.DeleteShader(ID); }
 
