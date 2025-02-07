@@ -1,0 +1,18 @@
+#version 330 core
+in vec4 texCoord;
+out vec4 FragColor;
+
+uniform sampler2D tex0;
+
+void main() 
+{
+    if(texCoord.x < 1)
+    {
+        FragColor = texture(tex0, texCoord.yz);
+    }
+    else
+    {
+        FragColor = vec4(texCoord.yzw,1);
+    }
+
+}

@@ -10,9 +10,9 @@ namespace MrX.Game.Graphics
     internal class VAO
     {
         public int ID;
-        public VAO() {
+        public VAO()
+        {
             ID = GL.GenVertexArray();
-            GL.BindVertexArray(ID);
         }
         public void LinkToVAO(int location, int size, VBO vbo)
         {

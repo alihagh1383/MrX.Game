@@ -10,7 +10,8 @@ namespace MrX.Game.Graphics
     public class ShaderProgram
     {
         public int ID;
-        public ShaderProgram(string vertexShaderFilepath, string fragmentShaderFilepath) {
+        public ShaderProgram(string vertexShaderFilepath, string fragmentShaderFilepath)
+        {
             // create the shader program
             ID = GL.CreateProgram();
             int vertexShader = GL.CreateShader(ShaderType.VertexShader);
@@ -21,12 +22,17 @@ namespace MrX.Game.Graphics
             GL.CompileShader(fragmentShader);
             GL.AttachShader(ID, vertexShader);
             GL.AttachShader(ID, fragmentShader);
-            string infoLogFrag = GL.GetShaderInfoLog(fragmentShader);
-            if (infoLogFrag != System.String.Empty)
-                System.Console.WriteLine(infoLogFrag);
             string infoLogVert = GL.GetShaderInfoLog(vertexShader);
-            if (infoLogVert != System.String.Empty)
-                System.Console.WriteLine(infoLogVert);
+            if (infoLogVert != string.Empty)
+            {
+                Console.WriteLine("LogVert"); Console.WriteLine(infoLogVert);
+            }
+            string infoLogFrag = GL.GetShaderInfoLog(fragmentShader);
+            if (infoLogFrag != string.Empty)
+            {
+                Console.WriteLine("LogFrag"); Console.WriteLine(infoLogFrag);
+            }
+           
             // Link the program to OpenGL
             GL.LinkProgram(ID);
 
@@ -37,26 +43,22 @@ namespace MrX.Game.Graphics
             GL.DeleteShader(vertexShader);
         }
 
-        public void Bind() { GL.UseProgram(ID);}
+        public void Bind() { GL.UseProgram(ID); }
         public void Unbind() { GL.UseProgram(0); }
         public void Delete() { GL.DeleteShader(ID); }
 
         public static string LoadShaderSource(string filePath)
         {
             string shaderSource = "";
-
             try
             {
-                using (StreamReader reader = new StreamReader("Shaders/" + filePath))
-                {
+                using (StreamReader reader = new StreamReader(filePath))
                     shaderSource = reader.ReadToEnd();
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Failed to load shader source file: " + e.Message);
             }
-
             return shaderSource;
         }
     }

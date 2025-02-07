@@ -42,7 +42,7 @@
     <None Update="Texture\ss_3d08ba6a194910f619e56f4e9615cb5ca2f5921b.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Texture\tilemap_packed %282%29.png">
+    <None Update="Texture\tilemap_packed (2).png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Texture\tilemap_packed.png">

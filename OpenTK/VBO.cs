@@ -11,25 +11,29 @@ namespace MrX.Game.Graphics
     internal class VBO
     {
         public int ID;
-        public VBO(List<Vector3> data) {
+        public VBO()
+        {
             ID = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
-            GL.BufferData(BufferTarget.ArrayBuffer, data.Count * Vector3.SizeInBytes, data.ToArray(), BufferUsageHint.StaticDraw);
         }
-        public VBO(List<Vector2> data) {
-            ID = GL.GenBuffer();
+        public void BindData(List<Vector4> data)
+        {
             GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
-            GL.BufferData(BufferTarget.ArrayBuffer, data.Count * Vector2.SizeInBytes, data.ToArray(), BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, data.Count * Vector4.SizeInBytes, data.ToArray(), BufferUsageHint.StaticDraw);
         }
-        public void Update(List<Vector3> data)
+        public void BindData(List<Vector3> data)
         {
             GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
             GL.BufferData(BufferTarget.ArrayBuffer, data.Count * Vector3.SizeInBytes, data.ToArray(), BufferUsageHint.StaticDraw);
         }
-        public void Update(List<Vector2> data)
+        public void BindData(List<Vector2> data)
         {
             GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
             GL.BufferData(BufferTarget.ArrayBuffer, data.Count * Vector2.SizeInBytes, data.ToArray(), BufferUsageHint.StaticDraw);
+        }
+        public void BindData(List<int> data)
+        {
+            GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
+            GL.BufferData(BufferTarget.ArrayBuffer, data.Count * sizeof(int), data.ToArray(), BufferUsageHint.StaticDraw);
         }
         public void Bind() { GL.BindBuffer(BufferTarget.ArrayBuffer, ID); }
         public void Unbind() { GL.BindBuffer(BufferTarget.ArrayBuffer, 0); }
