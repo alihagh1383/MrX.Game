@@ -8,14 +8,13 @@ using StbImageSharp;
 
 namespace MrX.Game.Graphics
 {
-    internal class Texture
+    public class Texture
     {
         public int ID;
         public TextureUnit? Unit = TextureUnit.Texture0;
         public Texture(string filepath)
         {
             ID = GL.GenTexture();
-
             GL.ActiveTexture(TextureUnit.Texture0);
             GL.BindTexture(TextureTarget.Texture2D, ID);
             // texture parameters

@@ -22,17 +22,6 @@ namespace MrX.Game.Graphics
             GL.CompileShader(fragmentShader);
             GL.AttachShader(ID, vertexShader);
             GL.AttachShader(ID, fragmentShader);
-            string infoLogVert = GL.GetShaderInfoLog(vertexShader);
-            if (infoLogVert != string.Empty)
-            {
-                Console.WriteLine("LogVert"); Console.WriteLine(infoLogVert);
-            }
-            string infoLogFrag = GL.GetShaderInfoLog(fragmentShader);
-            if (infoLogFrag != string.Empty)
-            {
-                Console.WriteLine("LogFrag"); Console.WriteLine(infoLogFrag);
-            }
-           
             // Link the program to OpenGL
             GL.LinkProgram(ID);
 

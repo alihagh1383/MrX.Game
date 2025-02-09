@@ -10,22 +10,25 @@ using OpenTK.Windowing.Common;
 
 namespace MrX.Game.GUI
 {
-    internal class UI
+    public class UI
     {
         internal readonly Scene scene;
         private bool Loaded = false;
-        ShaderProgram programUi;
-        VAO chunkVAO;
-        VBO chunkVertexVBO, chunkUVVBO;
-        IBO chunkIBO;
+        ShaderProgram programUi => Engin.UIShaderProgram;
+        VAO chunkVAO = new VAO();
+        VBO chunkVertexVBO = new VBO(), chunkUVVBO = new VBO();
+        IBO chunkIBO = new IBO();
+        public bool Update = true;
+        public Dictionary<string, Element> Elements = [];
+        List<Vector2> vertexs = [];
+        List<Vector4> uvs = [];
+        List<uint> ibos = [];
         //Texture texture;
-        List<Vector2> Vertexs = new() { (0.5f, 0f), (0, 0), (0, 0.5f), (-0.5f, 0), (0, 0), (0, -0.5f) };
-        List<Vector4> UVs { get => Enumerable.Range(0, Vertexs.Count).Select(p => new Vector4(
-            1,
-            Random.Shared.NextSingle(),
-            Random.Shared.NextSingle(),
-            Random.Shared.NextSingle()
-            )).ToList(); }
+        public List<Vector2> Vertexs = new() { (0.5f, 0f), (0, 0), (0, 0.5f), (-0.5f, 0), (0, 0), (0, -0.5f) };
+        List<Vector4> UVs
+        {
+            get => Enumerable.Range(0, Vertexs.Count).Select(p => new Vector4(1, 0, 0.5f, 001f)).ToList();
+        }
         List<uint> IBOs { get => Enumerable.Range(0, Vertexs.Count).Select(p => (uint)p).ToList(); }
         public UI(Scene scene)
         {
@@ -34,26 +37,18 @@ namespace MrX.Game.GUI
         internal void OnLoad()
         {
             if (Loaded) return;
-            programUi = new ShaderProgram(Path.Combine("GUI", "GUI.vert"), Path.Combine("GUI", "GUI.frog"));
-            chunkVAO = new VAO();
             chunkVAO.Bind();
-            chunkVertexVBO = new VBO();
             chunkVertexVBO.Bind();
             chunkVAO.LinkToVAO(0, 2, chunkVertexVBO);
-            chunkUVVBO = new VBO();
             chunkUVVBO.Bind();
             chunkVAO.LinkToVAO(1, 4, chunkUVVBO);
-            chunkIBO = new IBO();
-            //texture = new Texture(@"TileSet.png");
             Console.WriteLine(GL.GetError());
-            Loaded = true;
             programUi.Bind();
-            chunkVAO.Bind();
             chunkIBO.Bind();
-            //var t = new Span<Vector2>(Vertexs.ToArray());
-            //Random.Shared.Shuffle<Vector2>(t);
-            //Vertexs = t.ToArray().ToList();
-          
+            Loaded = true;
+            var t = new Span<Vector2>(Vertexs.ToArray());
+            Random.Shared.Shuffle<Vector2>(t);
+            Vertexs = t.ToArray().ToList();
 
         }
         internal void OnUnLoad()
@@ -63,19 +58,28 @@ namespace MrX.Game.GUI
         }
         internal void OnRenderFrame()
         {
-            if (!Loaded) throw new Exception("Load First");
+            if (!Loaded) OnLoad();
+            chunkVAO.Bind();
+            chunkVertexVBO.Bind();
+            chunkUVVBO.Bind();
+            programUi.Bind();
+            chunkIBO.Bind();
             GL.Disable(EnableCap.DepthTest);
-
-            //texture.Bind();
             GL.DrawElements(PrimitiveType.Triangles, Vertexs.Count, DrawElementsType.UnsignedInt, 0);
         }
         internal void OnUpdateFrame(FrameEventArgs args)
         {
-            if (!Loaded) throw new Exception("Load First");
+            if (!Loaded) OnLoad();
+            chunkVAO.Bind();
+            chunkVertexVBO.Bind();
+            chunkUVVBO.Bind();
+            programUi.Bind();
+            chunkIBO.Bind();
             chunkVertexVBO.BindData(Vertexs);
             chunkUVVBO.BindData(UVs);
             chunkIBO.BindData(IBOs);
-        
+
+
         }
     }
 }

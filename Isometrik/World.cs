@@ -7,7 +7,7 @@ using OpenTK.Windowing.Common;
 
 namespace MrX.Game.Isometrik
 {
-    internal class World
+    public class World
     {
         internal readonly Scene scene;
         internal Camera Camera;
@@ -29,11 +29,11 @@ namespace MrX.Game.Isometrik
         }
         internal void OnRenderFrame()
         {
-            if (!Loaded) throw new Exception("Load First");
+            if (!Loaded) OnLoad();
         }
         internal void OnUpdateFrame(FrameEventArgs args)
         {
-            if (!Loaded) throw new Exception("Load First");
+            if (!Loaded) OnLoad();
         }
     }
 }

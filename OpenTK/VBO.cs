@@ -14,6 +14,7 @@ namespace MrX.Game.Graphics
         public VBO()
         {
             ID = GL.GenBuffer();
+            Bind();
         }
         public void BindData(List<Vector4> data)
         {

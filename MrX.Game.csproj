@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>MrX.Game</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -27,28 +27,16 @@
 
 
   <ItemGroup>
-    <None Update="Shaders\Default2.frag">
+    <None Update="GUI\GUI.frog">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Shaders\Default2.vert">
+    <None Update="GUI\GUI.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Shaders\Default.frag">
+    <None Update="Isometrik\Isometrik.frog">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Shaders\Default.vert">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Texture\ss_3d08ba6a194910f619e56f4e9615cb5ca2f5921b.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Texture\tilemap_packed (2).png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Texture\tilemap_packed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Texture\TileSet.png">
+    <None Update="Isometrik\Isometrik.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
